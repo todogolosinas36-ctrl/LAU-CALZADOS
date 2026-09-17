@@ -33,7 +33,7 @@ const Sidebar = () => {
           {/* Logo Area */}
           <Link to="/" className="flex items-center gap-4 h-10 w-[220px]">
             <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-xl overflow-hidden shadow-[0_0_15px_rgba(255,85,0,0.4)]">
-              <img src="/logo.jpg" alt="Lau Calzados Logo" className="w-full h-full object-cover" />
+              <img src={`${import.meta.env.BASE_URL}logo.jpg`} alt="Lau Calzados Logo" className="w-full h-full object-cover" />
             </div>
             <span className={`text-xl font-bold tracking-tighter whitespace-nowrap transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
               LAU <span className="text-primary">CALZADOS</span>
@@ -152,7 +152,7 @@ const Sidebar = () => {
               <div className="flex justify-between items-center mb-12">
                 <Link to="/" className="flex items-center gap-3">
                   <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg overflow-hidden shadow-[0_0_10px_rgba(255,85,0,0.4)]">
-                    <img src="/logo.jpg" alt="Lau Calzados Logo" className="w-full h-full object-cover" />
+                    <img src={`${import.meta.env.BASE_URL}logo.jpg`} alt="Lau Calzados Logo" className="w-full h-full object-cover" />
                   </div>
                   <span className="text-xl font-bold tracking-tighter">
                     LAU <span className="text-primary">CALZADOS</span>

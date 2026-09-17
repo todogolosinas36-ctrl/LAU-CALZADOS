@@ -17,7 +17,7 @@ const AdminLayout = () => {
       <div>
         <div className="p-6 border-b border-white/5 flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg overflow-hidden shadow-[0_0_10px_rgba(255,85,0,0.4)]">
-            <img src="/logo.jpg" alt="Logo" className="w-full h-full object-cover" />
+            <img src={`${import.meta.env.BASE_URL}logo.jpg`} alt="Logo" className="w-full h-full object-cover" />
           </div>
           <span className="text-xl font-bold tracking-tighter">
             ADMIN <span className="text-primary">PANEL</span>
@@ -60,7 +60,7 @@ const AdminLayout = () => {
       <header className="md:hidden flex items-center justify-between h-16 px-4 bg-[#0b0b0f] border-b border-white/5 z-40">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg overflow-hidden shadow-[0_0_10px_rgba(255,85,0,0.4)]">
-            <img src="/logo.jpg" alt="Logo" className="w-full h-full object-cover" />
+            <img src={`${import.meta.env.BASE_URL}logo.jpg`} alt="Logo" className="w-full h-full object-cover" />
           </div>
           <span className="font-bold tracking-tighter">ADMIN</span>
         </div>

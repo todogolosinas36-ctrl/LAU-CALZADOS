@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Hero from './components/Hero';
 import ProductGrid from './components/ProductGrid';
@@ -33,7 +33,7 @@ const StoreLayout = () => (
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<StoreLayout />} />
@@ -43,7 +43,7 @@ function App() {
           <Route index element={<AdminInventory />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
