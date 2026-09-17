@@ -16,7 +16,10 @@ const AdminLayout = () => {
       {/* Sidebar Admin */}
       <aside className="w-64 border-r border-white/5 bg-[#0b0b0f] flex flex-col justify-between">
         <div>
-          <div className="p-6 border-b border-white/5">
+          <div className="p-6 border-b border-white/5 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg overflow-hidden shadow-[0_0_10px_rgba(255,85,0,0.4)]">
+              <img src="/logo.jpg" alt="Logo" className="w-full h-full object-cover" />
+            </div>
             <span className="text-xl font-bold tracking-tighter">
               ADMIN <span className="text-primary">PANEL</span>
             </span>

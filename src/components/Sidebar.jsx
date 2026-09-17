@@ -31,14 +31,14 @@ const Sidebar = () => {
         {/* Top: Logo & Search */}
         <div className="flex flex-col gap-8 px-5 overflow-hidden">
           {/* Logo Area */}
-          <div className="flex items-center gap-4 h-10 w-[220px]">
-            <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-primary rounded-xl font-bold text-white shadow-[0_0_15px_rgba(255,85,0,0.4)]">
-              L
+          <Link to="/" className="flex items-center gap-4 h-10 w-[220px]">
+            <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-xl overflow-hidden shadow-[0_0_15px_rgba(255,85,0,0.4)]">
+              <img src="/logo.jpg" alt="Lau Calzados Logo" className="w-full h-full object-cover" />
             </div>
             <span className={`text-xl font-bold tracking-tighter whitespace-nowrap transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
               LAU <span className="text-primary">CALZADOS</span>
             </span>
-          </div>
+          </Link>
 
           {/* Search Button */}
           <button className="flex items-center gap-4 text-gray-400 hover:text-white transition-colors w-[220px]">
@@ -150,9 +150,14 @@ const Sidebar = () => {
               className="md:hidden fixed top-0 left-0 h-full w-4/5 max-w-sm glass z-[101] flex flex-col p-6 shadow-2xl"
             >
               <div className="flex justify-between items-center mb-12">
-                <span className="text-xl font-bold tracking-tighter">
-                  LAU <span className="text-primary">CALZADOS</span>
-                </span>
+                <Link to="/" className="flex items-center gap-3">
+                  <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-lg overflow-hidden shadow-[0_0_10px_rgba(255,85,0,0.4)]">
+                    <img src="/logo.jpg" alt="Lau Calzados Logo" className="w-full h-full object-cover" />
+                  </div>
+                  <span className="text-xl font-bold tracking-tighter">
+                    LAU <span className="text-primary">CALZADOS</span>
+                  </span>
+                </Link>
                 <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 bg-white/5 rounded-full">
                   <X size={24} />
                 </button>
