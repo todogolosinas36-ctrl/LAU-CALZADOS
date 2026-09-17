@@ -1,11 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 import BrandFilter from './BrandFilter';
-import { products } from '../products';
+import { productService } from '../services/productService';
+import { brands } from '../products'; // We can keep brands array static for now, or derive it from products
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ProductGrid = () => {
   const [selectedBrand, setSelectedBrand] = useState(null);
+
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await productService.getProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   const filteredProducts = selectedBrand 
     ? products.filter(p => p.brand === selectedBrand)
@@ -33,27 +51,31 @@ const ProductGrid = () => {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
         >
           <AnimatePresence mode="popLayout">
-            {filteredProducts.map((product, index) => (
-              <motion.div
-                key={product.id}
-                layout
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ type: "spring", stiffness: 300, damping: 24, delay: index * 0.05 }}
-              >
-                <ProductCard product={product} />
-              </motion.div>
-            ))}
+            {isLoading ? (
+              <div className="col-span-full flex justify-center py-20 text-gray-400">
+                Cargando modelos exclusivos...
+              </div>
+            ) : filteredProducts.length === 0 ? (
+              <div className="col-span-full text-center py-20 text-gray-500">
+                No se encontraron productos para esta marca.
+              </div>
+            ) : (
+              filteredProducts.map((product, index) => (
+                <motion.div
+                  key={product.id}
+                  layout
+                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 24, delay: index * 0.05 }}
+                >
+                  <ProductCard product={product} />
+                </motion.div>
+              ))
+            )}
           </AnimatePresence>
         </motion.div>
-        
-        {filteredProducts.length === 0 && (
-          <div className="text-center py-20 text-gray-500">
-            No se encontraron productos para esta marca.
-          </div>
-        )}
       </div>
     </section>
   );

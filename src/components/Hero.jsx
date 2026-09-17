@@ -34,7 +34,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center md:text-left max-w-2xl mx-auto md:mx-0"
+          className="text-center md:text-left max-w-2xl mx-auto md:mx-0 pt-16 md:pt-24"
         >
           <div className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary font-semibold text-sm mb-6 backdrop-blur-md">
             NUEVA COLECCIÓN 2026

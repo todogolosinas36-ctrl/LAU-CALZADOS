@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Search, Menu, X, Home, Compass, Percent, Shirt } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ShoppingBag, Search, Menu, X, Home, Compass, Percent, Shirt, Settings } from 'lucide-react';
 import { InstagramIcon } from './Icons';
 import { useCart } from '../context/CartContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -10,10 +11,11 @@ const Sidebar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Inicio', icon: <Home size={22} />, href: '#' },
-    { name: 'Catálogo', icon: <Compass size={22} />, href: '#' },
-    { name: 'Indumentaria', icon: <Shirt size={22} />, href: '#' },
-    { name: 'Ofertas', icon: <Percent size={22} />, href: '#' },
+    { name: 'Inicio', icon: <Home size={22} />, path: '/' },
+    { name: 'Catálogo', icon: <Compass size={22} />, path: '#' },
+    { name: 'Indumentaria', icon: <Shirt size={22} />, path: '#' },
+    { name: 'Ofertas', icon: <Percent size={22} />, path: '#' },
+    { name: 'Admin', icon: <Settings size={22} />, path: '/admin' },
   ];
 
   return (
@@ -52,9 +54,9 @@ const Sidebar = () => {
         {/* Center: Navigation Links */}
         <nav className="flex flex-col gap-2 px-5 overflow-hidden">
           {navItems.map((item, index) => (
-            <a 
+            <Link 
               key={index} 
-              href={item.href}
+              to={item.path}
               className="flex items-center gap-4 text-gray-400 hover:text-white hover:bg-white/5 rounded-xl transition-all w-[220px] group"
             >
               <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center group-hover:text-primary transition-colors">
@@ -63,7 +65,7 @@ const Sidebar = () => {
               <span className={`whitespace-nowrap font-medium transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
                 {item.name}
               </span>
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -158,9 +160,9 @@ const Sidebar = () => {
 
               <nav className="flex flex-col gap-6 flex-1">
                 {navItems.map((item, index) => (
-                  <a key={index} href={item.href} onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-4 text-xl font-medium text-gray-300 hover:text-primary">
+                  <Link key={index} to={item.path} onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-4 text-xl font-medium text-gray-300 hover:text-primary">
                     {item.icon} {item.name}
-                  </a>
+                  </Link>
                 ))}
               </nav>
 
